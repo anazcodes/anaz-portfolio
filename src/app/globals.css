@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+:root {
+  /* Near-black dark theme */
+  --color-bg: #0a0908;
+  --color-bg-elevated: #131110;
+  --color-bg-card: #16130f;
+  --color-border: #2a251f;
+  --color-border-strong: #3a3226;
+
+  /* Warm off-white text */
+  --color-text: #f3efe8;
+  --color-text-muted: #a89d8d;
+  --color-text-faint: #6f6558;
+
+  /* Warm amber/gold accent */
+  --color-accent: #e8a53d;
+  --color-accent-strong: #f4bb5e;
+  --color-accent-soft: #e8a53d1a;
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-bg-elevated: var(--color-bg-elevated);
+  --color-bg-card: var(--color-bg-card);
+  --color-border: var(--color-border);
+  --color-border-strong: var(--color-border-strong);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-faint: var(--color-text-faint);
+  --color-accent: var(--color-accent);
+  --color-accent-strong: var(--color-accent-strong);
+  --color-accent-soft: var(--color-accent-soft);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Subtle glow used behind hero / profile avatar */
+.accent-glow {
+  background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);
+  opacity: 0.18;
+  filter: blur(40px);
+}
+
+::selection {
+  background: var(--color-accent-soft);
+  color: var(--color-accent-strong);
+}
+
+/* Custom scrollbar, kept subtle and on-theme */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}

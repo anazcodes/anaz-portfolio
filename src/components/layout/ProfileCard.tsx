@@ -1,22 +1,18 @@
+import Image from "next/image";
 import { profile, socials } from "@/lib/data";
 import { socialIconMap } from "@/components/ui/icons";
 
 export default function ProfileCard() {
   return (
     <div className="flex flex-col items-center text-center md:items-start md:text-left">
-      {/*
-        Profile photo placeholder.
-        Drop a real photo at /public/profile.jpg and replace this block with:
-        <Image src="/profile.jpg" alt="Portrait of Anaz Rasheed" width={128} height={128}
-               className="h-28 w-28 md:h-32 md:w-32 rounded-full object-cover ring-2 ring-accent/40" />
-      */}
-      <div
-        role="img"
-        aria-label="Placeholder profile photo for Anaz Rasheed"
-        className="relative flex h-28 w-28 md:h-32 md:w-32 items-center justify-center rounded-full bg-bg-elevated ring-2 ring-accent/40 text-3xl font-semibold text-accent"
-      >
-        AR
-      </div>
+      <Image
+        src="/profile.jpg"
+        alt="Portrait of Anaz Rasheed"
+        width={128}
+        height={128}
+        priority
+        className="h-28 w-28 md:h-32 md:w-32 rounded-full object-cover object-top ring-2 ring-accent/40"
+      />
 
       <h1 className="mt-5 text-xl font-bold tracking-tight text-text">
         {profile.name}

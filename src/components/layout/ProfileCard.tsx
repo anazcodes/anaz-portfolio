@@ -6,7 +6,7 @@ export default function ProfileCard() {
   return (
     <div className="flex flex-col items-center text-center md:items-start md:text-left">
       <Image
-        src="/profile.jpg"
+        src="/profile.png"
         alt="Portrait of Anaz Rasheed"
         width={128}
         height={128}

@@ -39,9 +39,8 @@ Without a verified custom domain on Resend, the sending address `onboarding@rese
 - `src/components/sections/` — page sections (Hero, About, Skills, Projects, Contact, ...).
 - `src/components/ui/` — shared primitives (Section wrapper, FadeIn scroll animation, icons).
 
-Placeholders to replace with real assets:
+Placeholders left to fill in:
 
-- Profile photo: see comment in `src/components/layout/ProfileCard.tsx`, drop the image at `public/profile.jpg`.
 - Project screenshots: see comment in `src/components/sections/Projects.tsx`, drop images under `public/projects/`.
 
 ## Deploying

@@ -4,8 +4,13 @@ import { useState, type FormEvent } from "react";
 import { Mail } from "lucide-react";
 import Section from "@/components/ui/Section";
 import FadeIn from "@/components/ui/FadeIn";
-import { GitHubIcon, LeetCodeIcon, LinkedInIcon } from "@/components/ui/icons";
-import { profile } from "@/lib/data";
+import {
+  GitHubIcon,
+  LeetCodeIcon,
+  LinkedInIcon,
+  WhatsAppIcon,
+} from "@/components/ui/icons";
+import { profile, whatsapp } from "@/lib/data";
 
 const contactLinks = [
   {
@@ -28,16 +33,42 @@ const contactLinks = [
     href: "https://leetcode.com/u/anaz_ibinu_rasheed/",
     icon: LeetCodeIcon,
   },
+  {
+    label: whatsapp.displayNumber,
+    href: whatsapp.href,
+    icon: WhatsAppIcon,
+  },
 ];
 
-export default function Contact() {
-  const [status, setStatus] = useState<"idle" | "sent">("idle");
+type Status = "idle" | "sending" | "sent" | "error";
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+export default function Contact() {
+  const [status, setStatus] = useState<Status>("idle");
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    // Client-side only for now; wire up to an API route or form service later.
-    setStatus("sent");
-    event.currentTarget.reset();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    setStatus("sending");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          message: data.get("message"),
+        }),
+      });
+
+      if (!response.ok) throw new Error("Failed to send");
+
+      setStatus("sent");
+      form.reset();
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -129,15 +160,42 @@ export default function Contact() {
 
             <button
               type="submit"
-              className="w-full rounded-full bg-accent px-6 py-3 text-sm font-semibold text-bg transition-colors hover:bg-accent-strong sm:w-auto"
+              disabled={status === "sending"}
+              className="w-full rounded-full bg-accent px-6 py-3 text-sm font-semibold text-bg transition-colors hover:bg-accent-strong disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
             >
-              Send Message
+              {status === "sending" ? "Sending..." : "Send Message"}
             </button>
 
-            <p role="status" aria-live="polite" className="text-sm text-accent">
-              {status === "sent"
-                ? "Thanks for reaching out! I'll get back to you soon."
-                : ""}
+            <p role="status" aria-live="polite" className="text-sm">
+              {status === "sent" ? (
+                <span className="text-accent">
+                  Thanks for reaching out! I&rsquo;ll get back to you soon.
+                </span>
+              ) : null}
+              {status === "error" ? (
+                <span className="text-text-muted">
+                  Unable to communicate with Anaz through email at this point
+                  in time. Please reach out via{" "}
+                  <a
+                    href="https://linkedin.com/in/anaz-rasheed"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-medium text-accent hover:text-accent-strong"
+                  >
+                    LinkedIn
+                  </a>{" "}
+                  or{" "}
+                  <a
+                    href={whatsapp.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-medium text-accent hover:text-accent-strong"
+                  >
+                    WhatsApp
+                  </a>{" "}
+                  instead.
+                </span>
+              ) : null}
             </p>
           </form>
         </FadeIn>

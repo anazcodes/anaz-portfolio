@@ -11,7 +11,7 @@ export default function ProfileCard() {
         width={128}
         height={128}
         priority
-        className="h-28 w-28 md:h-32 md:w-32 rounded-full object-cover ring-2 ring-accent/40"
+        className="h-28 w-28 md:h-32 md:w-32 rounded-full object-cover object-top ring-2 ring-accent/40"
       />
 
       <h1 className="mt-5 text-xl font-bold tracking-tight text-text">

@@ -76,7 +76,7 @@ export const experience: ExperienceItem[] = [
     location: "Mumbai",
     period: "Mar 2024 – Apr 2025",
     achievements: [
-      "Built backend systems (investment, KYC, bank-account verification, fraud-safe fuzzy name-matching) for AltCase, a fintech platform that mobilised over ₹1,000 crore in private market opportunities in FY26; improved API performance by reducing database calls by 83%.",
+      "Built backend systems (investment, KYC, bank-account verification) for AltCase, a fintech platform that mobilised over ₹1,000 crore in private market opportunities in FY26; improved API performance by reducing database calls by 83%.",
     ],
   },
   {

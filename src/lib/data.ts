@@ -2,15 +2,22 @@ export const profile = {
   name: "Anaz Rasheed",
   title: "Software Engineer | AI & Distributed Systems",
   location: "Kasaragod, Kerala, India",
-  email: "anaz.rasheed@example.com",
+  email: "anazibinurasheed@gmail.com",
   taglineShort: "Building scalable, AI-powered systems.",
+};
+
+export const whatsapp = {
+  displayNumber: "+91 85901 38151",
+  /** wa.me expects the number without "+", spaces, or leading zeros. */
+  href: "https://wa.me/918590138151?text=Hi%20Anaz%2C%20I%20found%20your%20portfolio%20and%20wanted%20to%20connect!",
 };
 
 export const socials = [
   { label: "GitHub", href: "https://github.com/anazcodes", icon: "github" },
   { label: "LinkedIn", href: "https://linkedin.com/in/anaz-rasheed", icon: "linkedin" },
   { label: "LeetCode", href: "https://leetcode.com/u/anaz_ibinu_rasheed/", icon: "leetcode" },
-  { label: "Email", href: "mailto:anaz.rasheed@example.com", icon: "mail" },
+  { label: "WhatsApp", href: whatsapp.href, icon: "whatsapp" },
+  { label: "Email", href: `mailto:${profile.email}`, icon: "mail" },
 ] as const;
 
 export const navLinks = [

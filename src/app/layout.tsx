@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
+import { profile } from "@/lib/data";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,13 +14,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://anazrasheed.dev";
+const siteUrl = profile.siteUrl;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Anaz Rasheed — Software Engineer, AI & Distributed Systems",
+  title: "Anaz Rasheed — Software Engineer Building AI Applications",
   description:
-    "Portfolio of Anaz Rasheed, a Software Engineer based in Kasaragod, Kerala, India, building scalable, AI-powered backend and distributed systems.",
+    "Portfolio of Anaz Rasheed, a Software Engineer in Kasaragod, Kerala, India, building production-ready AI systems with nearly four years of backend engineering across fintech, restaurant tech and real-time systems.",
   keywords: [
     "Anaz Rasheed",
     "Software Engineer",
@@ -27,22 +28,23 @@ export const metadata: Metadata = {
     "Golang Developer",
     "Distributed Systems",
     "AI Engineer",
+    "Product Engineer",
     "Kerala",
   ],
   authors: [{ name: "Anaz Rasheed" }],
   openGraph: {
-    title: "Anaz Rasheed — Software Engineer, AI & Distributed Systems",
+    title: "Anaz Rasheed — Software Engineer Building AI Applications",
     description:
-      "Building scalable, AI-powered backend and distributed systems. Explore my work, skills, and experience.",
+      "Building production-ready AI systems. Explore my work, skills, and experience.",
     url: siteUrl,
     siteName: "Anaz Rasheed",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Anaz Rasheed — Software Engineer, AI & Distributed Systems",
+    title: "Anaz Rasheed — Software Engineer Building AI Applications",
     description:
-      "Building scalable, AI-powered backend and distributed systems.",
+      "Building production-ready AI systems.",
   },
 };
 

@@ -15,22 +15,22 @@ export default function Hero() {
       <div className="relative max-w-2xl">
         <FadeIn>
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-            Software Engineer
+            AI Engineer &middot; Product Engineer &middot; Golang
           </p>
         </FadeIn>
 
         <FadeIn delay={0.05}>
           <h1 className="text-3xl font-bold leading-tight tracking-tight text-text sm:text-4xl md:text-5xl">
             Software Engineer building{" "}
-            <span className="text-accent">scalable, AI-powered systems.</span>
+            <span className="text-accent">production-ready AI systems.</span>
           </h1>
         </FadeIn>
 
         <FadeIn delay={0.1}>
           <p className="mt-6 text-base leading-relaxed text-text-muted sm:text-lg">
-            I work across backend engineering, distributed systems, and AI
-            integration &mdash; designing reliable services and shipping
-            AI-powered features that hold up under real-world load.
+            Nearly four years of backend engineering across fintech, restaurant
+            tech and real-time systems &mdash; building software that keeps
+            working when real money and real volume hit it.
           </p>
         </FadeIn>
 

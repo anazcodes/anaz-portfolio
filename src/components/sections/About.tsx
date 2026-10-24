@@ -1,14 +1,23 @@
 import Section from "@/components/ui/Section";
 import FadeIn from "@/components/ui/FadeIn";
-import { aboutText, education, experience } from "@/lib/data";
+import {
+  aboutExtras,
+  aboutParagraphs,
+  education,
+  experience,
+} from "@/lib/data";
 
 export default function About() {
   return (
     <Section id="about" eyebrow="About" title="A bit about me">
       <FadeIn>
-        <p className="max-w-2xl text-base leading-relaxed text-text-muted">
-          {aboutText}
-        </p>
+        <div className="max-w-2xl space-y-4 text-base leading-relaxed text-text-muted">
+          {aboutParagraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+          <p>{aboutExtras.openSource}</p>
+          <p>{aboutExtras.outsideCode}</p>
+        </div>
       </FadeIn>
 
       <div className="mt-12">
@@ -32,8 +41,13 @@ export default function About() {
                 <p className="text-sm text-text-muted">
                   {item.company} &middot; {item.location}
                 </p>
+                {item.summary ? (
+                  <p className="mt-3 text-sm leading-relaxed text-text-muted">
+                    {item.summary}
+                  </p>
+                ) : null}
                 {item.achievements ? (
-                  <ul className="mt-3 space-y-2">
+                  <ul className="mt-3 list-disc space-y-2 pl-5 marker:text-accent/60">
                     {item.achievements.map((achievement) => (
                       <li
                         key={achievement}
@@ -50,20 +64,39 @@ export default function About() {
         </ol>
       </div>
 
-      <div className="mt-12">
-        <h3 className="text-sm font-semibold uppercase tracking-[0.15em] text-text-faint">
-          Education
-        </h3>
-        <ul className="mt-6 space-y-4">
-          {education.map((item, index) => (
-            <FadeIn as="li" key={item.institution} delay={index * 0.08}>
-              <p className="text-base font-semibold text-text">
-                {item.institution}
-              </p>
-              <p className="text-sm text-text-muted">{item.program}</p>
-            </FadeIn>
-          ))}
-        </ul>
+      <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-2">
+        <div>
+          <h3 className="text-sm font-semibold uppercase tracking-[0.15em] text-text-faint">
+            Education
+          </h3>
+          <ul className="mt-6 space-y-4">
+            {education.map((item, index) => (
+              <FadeIn as="li" key={item.institution} delay={index * 0.08}>
+                <p className="text-base font-semibold text-text">
+                  {item.institution}
+                </p>
+                <p className="text-sm text-text-muted">{item.program}</p>
+                {item.period ? (
+                  <p className="text-xs text-text-faint">{item.period}</p>
+                ) : null}
+              </FadeIn>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-sm font-semibold uppercase tracking-[0.15em] text-text-faint">
+            Languages
+          </h3>
+          <ul className="mt-6 space-y-2">
+            {aboutExtras.languages.map((language) => (
+              <li key={language.name} className="text-sm text-text-muted">
+                <span className="font-semibold text-text">{language.name}</span>{" "}
+                &middot; {language.level}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </Section>
   );

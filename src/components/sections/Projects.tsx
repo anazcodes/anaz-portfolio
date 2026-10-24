@@ -6,9 +6,7 @@ import { projects, type Project } from "@/lib/data";
 function ProjectCard({ project }: { project: Project }) {
   return (
     <div
-      className={`flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-bg-card transition-colors ${
-        project.placeholder ? "opacity-60" : "hover:border-accent/50"
-      }`}
+      className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-bg-card transition-colors hover:border-accent/50"
     >
       {/* Browser-window mockup frame */}
       <div className="flex items-center gap-1.5 border-b border-border bg-bg-elevated px-4 py-3">
@@ -24,11 +22,7 @@ function ProjectCard({ project }: { project: Project }) {
       */}
       <div
         role="img"
-        aria-label={
-          project.placeholder
-            ? "Screenshot placeholder for a future project"
-            : `Screenshot placeholder for ${project.name}`
-        }
+        aria-label={`Screenshot placeholder for ${project.name}`}
         className="flex aspect-video items-center justify-center bg-bg-elevated text-xs font-medium uppercase tracking-wide text-text-faint"
       >
         Screenshot placeholder
@@ -53,11 +47,11 @@ function ProjectCard({ project }: { project: Project }) {
           </ul>
         ) : null}
 
-        {!project.placeholder ? (
+        {project.url ? (
           <a
-            href={project.url ?? "#"}
-            target={project.url && project.url !== "#" ? "_blank" : undefined}
-            rel={project.url && project.url !== "#" ? "noreferrer" : undefined}
+            href={project.url}
+            target={project.url !== "#" ? "_blank" : undefined}
+            rel={project.url !== "#" ? "noreferrer" : undefined}
             className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-accent transition-colors hover:text-accent-strong"
           >
             Visit

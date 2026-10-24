@@ -18,8 +18,12 @@ export default function Certifications() {
                 <h3 className="text-base font-semibold text-text">
                   {cert.name}
                 </h3>
-                <p className="mt-1 text-sm text-text-muted">{cert.issuer}</p>
-                <p className="mt-1 text-xs text-text-faint">{cert.date}</p>
+                {cert.issuer ? (
+                  <p className="mt-1 text-sm text-text-muted">{cert.issuer}</p>
+                ) : null}
+                {cert.date ? (
+                  <p className="mt-1 text-xs text-text-faint">{cert.date}</p>
+                ) : null}
                 {cert.credentialId ? (
                   <p className="mt-1 text-xs text-text-faint">
                     Credential ID: {cert.credentialId}

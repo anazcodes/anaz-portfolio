@@ -184,7 +184,17 @@ export type Certification = {
 export const certifications: Certification[] = [
   {
     name: "Generative AI and LLMs: Architecture and Data Preparation",
-    url: "#",
+    issuer: "IBM",
+    date: "Sep 2026",
+    credentialId: "GHNYD2P4W9J4",
+    url: "https://coursera.org/verify/GHNYD2P4W9J4",
+  },
+  {
+    name: "Machine Learning with Python",
+    issuer: "IBM",
+    date: "Sep 2026",
+    credentialId: "BXCFJVUDCGZ4",
+    url: "https://coursera.org/verify/BXCFJVUDCGZ4",
   },
   {
     name: "Go",
